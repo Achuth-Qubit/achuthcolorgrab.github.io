@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Grabber</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="Authors"  content="Achuth,Sujan,Devendra">
+	<meta name="description" content="its a color prediction website here for front end we are using the html and css and for the backend we are using the python ">
+	<link rel="stylesheet" type="text/css" href="mains.css">
+	
+</head>
+<body>
+<div id="image-container">
+
+</div>
+
+<input type="file" id="filetoRead" value = "Upload Image " style="
+ display: block;
+  background: rgb(0,240,0);
+  border: none;
+  border-radius: 25px;
+  padding: 5px 8px;
+  font-family: geneva , times new roman , sanserif;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 14pt;
+  margin-top: 4%;
+  margin-left: 50px;
+  line-height: 25px;
+
+" />
+<script type="text/javascript">
+	document.getElementById("filetoRead").addEventListener("change",function(){
+  var file = this.files[0];
+
+  if (file) {
+  		if ((file.type == 'image/png') ||
+          (file.type == 'image/jpg') ||          
+          (file.type == 'image/jpeg')
+          ){
+      	
+         var reader = new FileReader();
+
+      reader.onload = function (evt) {
+          var imgTag = '<img style="max-width:800px;max-height:400px; cursor:crosshair;" src="'+evt.target.result+'" alt="my image"  />';
+          document.getElementById("image-container").innerHTML = imgTag;
+          alert("Image Loaded Press OK");
+      };
+
+      reader.onerror = function (evt) {
+        console.error("An error ocurred reading the file",evt);
+      };
+
+      reader.readAsDataURL(file);
+        
+      }else{
+      	alert("Please provide a png or jpg or jpeg image.");
+        return false;
+      }
+    }
+},false);
+</script>
+
+<div>
+	<table>
+		<tr>
+			
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>
